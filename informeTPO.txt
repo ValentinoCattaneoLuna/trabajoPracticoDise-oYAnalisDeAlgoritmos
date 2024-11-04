@@ -1,0 +1,34 @@
+En este informe se presenta el desarrollo de un algoritmo que identifica y devuelve los valores resultantes de elevar a una potencia n los nodos de un árbol binario con exactamente un hijo.
+Para realizar lo propuesto en el enunciado, decidimos trabajar con el código de "Árbol Binario" y "Nodos" que desarrollamos en la materia de Algoritmos y Estructuras de Datos II. Al conocer el funcionamiento de cada método, nos resultó más fácil entender qué debíamos programar para cumplir con la consigna.
+Al momento de diseñar el código, dividimos el funcionamiento en tres funciones:
+
+-tieneSoloUnHijo(nodo):
+Esta función se encarga de verificar si el nodo que está siendo evaluado en ese momento cumple con la condición de tener solo un “hijo”, ya sea izquierdo o derecho.
+Por lo tanto, lo que retorna esta función es un Boolean.
+La complejidad temporal de esta función es O(1).
+
+-potenciar(numero, potencia)
+Esta función recibe dos parámetros: uno es el número a elevar y el otro es su exponente.
+Su tarea es elevar el número a la potencia pasada como parámetro.
+Por lo tanto, esta función retorna un Integer.
+Su complejidad temporal es de O(log(potencia)).
+
+-potenciarHijosUnicos(arbol, potencia)
+Esta función recibe dos parámetros: uno es el árbol binario y el otro es el exponente al cual se quieren elevar los valores de los nodos con un solo “hijo”.
+Esta función fue desarrollada utilizando la técnica de divide y conquista.
+Primero, verifica que el árbol no esté vacío.
+Si el árbol no está vacío, obtiene la raíz y aplica la función tieneSoloUnHijo(nodo).
+Si esto se cumple, se obtiene el valor del nodo y se utiliza la función potenciar(numero, potencia) con el valor del nodo y la potencia pasada como parámetro.
+Una vez potenciado el valor, se agrega a una lista de enteros.
+Después, la función se llama recursivamente dos veces, una para cada nodo “hijo” que tiene la raíz, repitiendo el proceso hasta llegar al final del árbol binario.
+Esta función retorna un ArrayList<Integer>.
+Todo este proceso tiene una complejidad temporal de O(n).
+
+Estructuras de datos:
+Como se mencionó anteriormente, utilizamos dos estructuras de datos:
+ArbolB
+NodoArbol
+Estas clases cuentan con métodos básicos como getters, setters, agregar, eliminar, balancear, etc. Sin embargo, los métodos que resultaron fundamentales para desarrollar las tres funciones y cumplir con la consigna fueron:
+EsVacio(): Indica si el árbol está vacío. Método de la clase ArbolB.
+HijoIzquierdo(): Retorna el hijo izquierdo de la raíz utilizando el método getNodoIzquierdo() de la clase NodoArbol. Método de ArbolB.
+HijoDerecho(): Retorna el hijo derecho de la raíz utilizando el método getNodoDerecho() de la clase NodoArbol. Método de ArbolB.
